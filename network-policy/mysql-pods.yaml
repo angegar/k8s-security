@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: mysql
+    tier: data
+  name: mysql
+  namespace: data
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql
+      tier: data
+  template:
+    metadata:
+      labels:
+        app: mysql
+        tier: data
+    spec:
+      containers:
+      - image: mysql
+        name: mysql
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: toto
+

@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: app
+  labels:
+    tier: app
+
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: pods
+  name: pods
+  namespace: app
+spec:
+  containers:
+  - image: nginx
+    name: nginx
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: pods
+  name: pods
+  namespace: app
+spec:
+  containers:
+  - image: phpmyadmin
+    name: phpmyadmin
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
